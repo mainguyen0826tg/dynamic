@@ -1,0 +1,30 @@
+<div class='example-wrapper'>
+    <div class='example-with-source'>
+        <div class='example'>
+            <div class='layout-wrapper'>
+                <div class='wrapper'>
+                    <div class='sidebar'>
+                        <h3>Measures</h3>
+                        <div>
+                            <ul class="heroes">
+                                <li *ngFor="let item of measureList; index as i">
+                                    <button class="measures">{{measureList[i].title}}</button> 
+                                </li>
+                              </ul>
+                        </div>
+                    </div>
+                    <div class='content'>
+                        <div class='details'>
+                            <div>
+                                <div class='line-chart-block'>
+                                    <h2>Average daily total sales by menu item</h2>
+                                    <div class='s-dynamic-measures-line-chart' [id]='lineChartDM'></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>   
