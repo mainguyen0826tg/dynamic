@@ -1,0 +1,125 @@
+/* ==CSSGlobalFiltersExample============================== */
+ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0 0 20px 0;
+}
+
+.layout-wrapper {
+    display: flex;
+    flex: 1 0 auto;
+}
+
+h2 {
+    margin-top: 10px;
+    border-bottom: 2px solid #14b2e2;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+}
+
+.details {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(600px, 1fr));
+    grid-column-gap: 20px;
+    grid-row-gap: 20px;
+}
+
+.line-chart-block {
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+}
+
+.s-dynamic-measures-line-chart{
+    flex: 1 0 400px;
+    height: 400px;
+}
+
+/* ==CSSSidebarItem============================== */
+li {
+    margin: 0 -10px 5px -10px;
+    position: relative;
+}
+
+button {
+    display: block;
+    text-align: left;
+    width: 100%;
+    font-size: 14px;
+    background: transparent none;
+    padding: 10px 20px 10px 10px;
+    border: 0;
+    border-right-style: solid;
+    border-right-color: #dde4eb;
+    color: #6d7680;
+    transition: border-right-color 200ms ease-out, color 200ms ease-out;
+    cursor: pointer;
+    outline: 0;
+}
+
+button:hover {
+    border-right-width: 3px;
+    color: #000000;
+}
+
+button.selected {
+    border-right-color: #14b2e2;
+    border-right-width: 3px;
+    color: #000000;
+    
+}
+
+/* ==CSSGlobalFilters============================== */
+.example-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: stretch;
+    flex: 1 0 auto;
+}
+
+/* ==CSSExampleWithSource============================== */
+.example-with-source {
+    flex: 1 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: stretch;
+    margin-top: 30px;
+}
+
+.example {
+    padding: 20px;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.2);
+    background-color: white;
+}
+
+.source {
+    margin: 20px 0;
+}
+
+:global(pre) {
+    overflow: auto;
+}
+
+/* ==CSSLayout============================== */
+.wrapper {
+    display: grid;
+    grid-template-columns: 200px 0;
+    justify-content: stretch;
+    justify-items: stretch;
+    flex: 1;
+}
+
+.sidebar {
+    padding: 10px 5px 5px 0;
+    border-right: 1px solid #dde4eb;
+}
+
+.ulsidebar {
+    padding: 10px 5px 5px 0;
+}
+
+.content {
+    padding: 20px 0 20px 30px;
+}

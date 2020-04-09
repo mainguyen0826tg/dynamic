@@ -1,0 +1,27 @@
+<div class='example-wrapper'>
+    <div class='example-with-source'>
+      <div class='example'>
+        <div class='layout-wrapper'>
+          <div class='wrapper'>
+            <div class='sidebar'>
+              <h3>Measures</h3>
+              <div>
+                <ul class="ulsidebar">
+                  <li class='list-item-wrap' *ngFor="let item of measureList; index as i">
+                    <button class='list-item'(click)="onMeasureChange(item.link)" [class.selected]="item===selectedItemLink">{{item.title}} </button> 
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class='content'>
+              <div class='details'>
+                <div class='line-chart-block'>
+                  <div class='s-dynamic-measures-line-chart' [id]='lineChartDM'></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

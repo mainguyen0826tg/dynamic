@@ -20,19 +20,12 @@ import { MeasureValueFilterShownInPercentComponent } from './measure-value-filte
 import { MeasureValueFilterStackto100PercentComponent } from './measure-value-filter-stackto100-percent/measure-value-filter-stackto100-percent.component';
 import { WithFortmattedPercentComponent } from './with-fortmatted-percent/with-fortmatted-percent.component';
 import { DynamicMeasuresComponent } from './dynamic-measures/dynamic-measures.component';
-import { DualaxisComponent } from './dualaxis/dualaxis.component';
+import { DynamicComponent } from './dynamic/dynamic.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
-    // KpiComponent,
-    // LineChartComponent,
-    // ColumnChartComponent,
-    // PivotTableComponent,
-    // MeasureValueFilterComponent,
-    // AttributeFilterComponent,
-    // AttributeFilterNLineChartComponent,
-    // MeasureValueFilterNLineChartComponent,
     MeasureValueFilterWFormattedPercentageComponent,
     MeasureValueFilterPercentageDropdownComponent,
     MeasureValueFilterDropdownRatioExampleComponent,
@@ -42,7 +35,8 @@ import { DualaxisComponent } from './dualaxis/dualaxis.component';
     MeasureValueFilterStackto100PercentComponent,
     WithFortmattedPercentComponent,
     DynamicMeasuresComponent,
-    DualaxisComponent,
+    DynamicComponent,
+
     
   ],
   imports: [
