@@ -6,9 +6,8 @@ import * as invariant from 'invariant';
 import { LineChart, ColumnChart, ErrorComponent, LoadingComponent, Model } from "@gooddata/react-components";
 import sdk from "@gooddata/gooddata-js";
 import { monthDateIdentifier, projectId, franchiseFeesTag } from '../../utils/fixtures';
+import { DynamicMeasuresComponent } from '../dynamic-measures/dynamic-measures.component';
 
-
-let self: any;
 export interface LineChartBucketProps {
   projectId: any;
   measures: any[];
@@ -35,31 +34,32 @@ export class DynamicComponent implements OnInit {
   selectedMeasures: any;
   measures: any[];
   constructor() {
-    //this.measures=[];
-    this.measureList = null;
+    this.measureList = [];
     this.error = null;
     this.onMeasureChange = this.onMeasureChange.bind(this);
+
   }
+
   onMeasureChange(measureIdentifier) {
-    const { measureList } = this.measureList;
+    const measureList = this.measureList;
     const updatedMeasure = measureList.find(measure => measure.link === measureIdentifier);
     const updatedMeasureIndex = measureList.indexOf(updatedMeasure);
     const updatedMeasures = [...measureList];
     updatedMeasures[updatedMeasureIndex] = {
-      ...updatedMeasure,
-      isSelected: !updatedMeasure.isSelected,
+        ...updatedMeasure,
+        isSelected: !updatedMeasure.isSelected,
     };
     this.measureList = updatedMeasures;
-  }
-
+    this.render();
+}
 
   componentWillMount() {
     sdk.xhr
       .get(`/gdc/md/${projectId}/tags/${franchiseFeesTag}`)
       .then(response => {
-        debugger;
-        if (!response.data.entries.length) {
-          // console.log("0000000000000000................");
+        const entries = response.data.entries;
+        const entriesCount = entries.length;
+        if (!entriesCount) {
           this.measureList = null;
           this.error = {
             message: `No measures with tag ${franchiseFeesTag}`,
@@ -67,15 +67,14 @@ export class DynamicComponent implements OnInit {
           }
         }
         else {
-          // console.log("11111111111111111................");
-          this.measureList = response.data.entries.map(entry => ({
+          this.measureList = entries.map(entry => ({
             ...entry,
             isSelected: true,
-            afmMeasures: Model.measure(entry.link).format("#,##0"),
-          })),
-            this.error = null;
-          //console.log("this.measureList = " + JSON.stringify(this.measureList[0].link));
+            afmMeasure: Model.measure(entry.link).format("#,##0"),
+          }));
+          this.error = null;
         }
+        this.render();
       })
       .catch(error => {
         this.measureList = null;
@@ -86,20 +85,20 @@ export class DynamicComponent implements OnInit {
       });
   }
 
-  getMeasure = (measureList) => {
-    debugger;
-    console.log("hhaaa:"+measureList);
-    if (measureList) {
-      this.selectedMeasures = measureList.filter(measure => measure.isSelected); 
-      //console.log("hhaaa:"+this.selectedMeasures);
-      this.measures=this.selectedMeasures.map(item => item.afmMeasure);
-      return this.measures;     
-    }
-    return [];
-  }
-
   render() {
-    this.renderLineChart( self.getMeasure(self.measures))
+    const selectedMeasures = this.measureList.filter(measure => measure.isSelected);
+    const measures = selectedMeasures.map(item => item.afmMeasure);
+
+    // call Dynamic-measure component to render sideBar....
+    if(selectedMeasures.length) {
+      this.renderLineChart(measures);
+    } else {
+      ReactDOM.render(React.createElement(ErrorComponent, {
+        message: "Please select at least one measure"
+      }), this.getLineChartNode());
+    }
+
+
     // if (this.error) {
     //   // return <ErrorComponent message={error.message} description={error.description} />;
     // }
@@ -125,7 +124,6 @@ export class DynamicComponent implements OnInit {
   }
 
   ngOnInit() {
-    self = this;
     this.componentWillMount();
     //this.selectedMeasures = this.measures;
     // this.renderLineChart(self.getMeasure(self.measures));

@@ -147,9 +147,9 @@ export class DynamicMeasuresComponent implements OnInit, OnDestroy, OnChanges, A
 
   // getMeasure = (measureList) => {
   //   if (measureList) {
-  //     this.selectedMeasures = measureList.filter(measure => measure.isSelected); 
+  //     this.selectedMeasures = measureList.filter(measure => measure.isSelected);
   //     this.measures=this.selectedMeasures.map(item => item.afmMeasure);
-  //     return this.measures;     
+  //     return this.measures;
   //   }
   // }
 

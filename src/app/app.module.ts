@@ -19,7 +19,7 @@ import { GeoChartComponent } from './geo-chart/geo-chart.component';
 import { MeasureValueFilterShownInPercentComponent } from './measure-value-filter-shown-in-percent/measure-value-filter-shown-in-percent.component';
 import { MeasureValueFilterStackto100PercentComponent } from './measure-value-filter-stackto100-percent/measure-value-filter-stackto100-percent.component';
 import { WithFortmattedPercentComponent } from './with-fortmatted-percent/with-fortmatted-percent.component';
-import { DynamicMeasuresComponent } from './dynamic-measures/dynamic-measures.component';
+// import { DynamicMeasuresComponent } from './dynamic-measures/dynamic-measures.component';
 import { DynamicComponent } from './dynamic/dynamic.component';
 
 @NgModule({
@@ -41,9 +41,9 @@ import { DynamicComponent } from './dynamic/dynamic.component';
     MeasureValueFilterShownInPercentComponent,
     MeasureValueFilterStackto100PercentComponent,
     WithFortmattedPercentComponent,
-    DynamicMeasuresComponent,
+    // DynamicMeasuresComponent,
     DynamicComponent,
-    
+
   ],
   imports: [
     BrowserModule,
